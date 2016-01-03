@@ -1,0 +1,16 @@
+<div class="dropdown">
+	<button class="btn btn-xs btn-default dropdown-toggle" type="button" data-toggle="dropdown">Actions<span class="caret"></span></button>
+	<ul class="dropdown-menu">
+		<li>
+			<a ng-click="toggleFavorite(movie.id-1)">
+				<span ng-show="movie.favorite">Un-</span>Favorite
+			</a>
+		</li>
+		<li>
+			<a ng-click="searchIMDB(movie.name)">Search on IMDB</a>
+		</li>
+		<li>
+			<a ng-click="searchRT(movie.name)">Search on Rotten Tomatoes</a>
+		</li>
+	</ul>
+</div>

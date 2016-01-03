@@ -1,0 +1,11 @@
+#master-data th { cursor: pointer; text-align:center; }
+#master-data .even{ background-color: #fff }
+#master-data .odd{ background-color: #eee }
+#master-data #watch-date, #master-data #actions{ width: 8%; }
+
+.center{ text-align:center;}
+.left{ text-align: left;}
+.right{ text-align: right;}
+
+.linkify{ cursor:pointer; }
+.favorite{ font-weight: bold; }
