@@ -1,3 +1,3 @@
 (function() {
-	var app = angular.module( 'movieApp', [] );
+	angular.module( 'movieApp', [] );
 })();
