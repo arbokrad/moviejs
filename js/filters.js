@@ -15,29 +15,29 @@
 						results.push( movie );
 					}
 				});
-				
+
 				return results;
 			}
-		}
+		};
 	});
-	
+
 	angular.module( 'movieApp' ).filter( 'rating' , function(){
 		return function(input, rating) {
-			
+
 			if( rating == 'ANY' ) {
 				return input;
 			} else {
 				var results = [];
-				
+
 				angular.forEach( input, function(movie) {
 					if( movie.rating == rating ) {
 						results.push( movie );
 					}
 				});
-				
+
 				return results;
 			}
-		}
+		};
 	});
-	
+
 })();
