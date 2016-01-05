@@ -66,11 +66,7 @@
 			movie.toggleFavorite();
 
 			// keep track of the number of movies that have been favorited or un-favorited
-			if( movie.favorite ) {
-				$scope.favCount++;
-			} else {
-				$scope.favCount--;
-			}
+			$scope.favCount = movie.favorite ? $scope.favCount++ : $scope.favCount--;
 
 			// if there are no more favorites, and we are showing only favorites, show the full list instead
 			if( $scope.favCount <= 0 && $scope.showFavoritesOnly ) {
