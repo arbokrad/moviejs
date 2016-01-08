@@ -11,6 +11,6 @@ function Movie() {
 	this.favorite = false;
 }
 
-Movie.prototype.toggleFavorite = function(){
+Movie.prototype.toggleFavorite = function() {
 	this.favorite = !this.favorite;
 };

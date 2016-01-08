@@ -1,5 +1,7 @@
 (function() {
-	angular.module( 'movieApp' ).controller('movieCtrl', ['$scope', '$filter', '$http', function( $scope, $filter, $http ){
+	angular.module( 'movieApp' ).controller('movieCtrl', ['$scope', '$filter', '$http', MovieController]);
+
+	function MovieController( $scope, $filter, $http ) {
 
 		var dataURL = 'https://spreadsheets.google.com/feeds/list/1WfPJ5pDCYsh8wq0f3so7kFtbW3UT4-OpSvI2t027zXk/o1a66w7/public/basic?alt=json';
 		var orderBy = $filter('orderBy');
@@ -16,9 +18,9 @@
 		$scope.refresh = function() {
 			$http.get( dataURL )
 				.success( function(response) {
-					var results = movieUtil.parse(response);
-					$scope.allMovies = results.movies;
-					$scope.ratingOptions = results.ratings;
+					var movieList = movieUtil.parse(response);
+					$scope.allMovies = movieList.movies;
+					$scope.ratingOptions = movieList.getRatingOptions();
 
 					$scope.loaded = true;
 				});
@@ -100,5 +102,5 @@
 			$scope.order( 'date', false );
 		};
 		$scope.init();
-	}]);
+	};
 })();

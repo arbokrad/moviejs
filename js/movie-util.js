@@ -15,11 +15,8 @@ var movieUtil = function() {
 
 	// parse the given response
 	function parse( response ) {
-		var movies = [];
-		var rawRatings = [];
-		var rawRatingCounts = [];
-		var ratings = [];
 
+		var movieList = new MovieList();
 		var entries = response.feed.entry;
 
 		// grab each line, parse it, and push it into the master data array
@@ -27,44 +24,11 @@ var movieUtil = function() {
 			var movieLine = entries[i].content.$t;
 			var movie = parseMovieLine( movieLine );
 			movie.id = i + 1;
-			movies.push( movie );
 
-			// if the rating is a new one, add it to the list
-			if( rawRatings.indexOf( movie.rating ) == -1 ) {
-				rawRatings.push( movie.rating );
-			}
-
-			// either way, increment the counts for the specified rating
-			rawRatingCounts[movie.rating] = rawRatingCounts[movie.rating] ? rawRatingCounts[movie.rating]+1 : 1;
+			movieList.addMovie( movie );
 		}
 
-		// create real rating objects from the raw data
-		ratings = createRatingOptions( rawRatings, rawRatingCounts);
-
-		// create the results object to wrap up both movie list and rating list
-		var results = {};
-		results.movies = movies;
-		results.ratings = ratings;
-		return results;
-	};
-
-	// creates a sorted list of "rating" objects with id = label
-	function createRatingOptions( rawRatings, rawRatingCounts ) {
-		var ratings = [];
-
-		// sort ratings, highest to lowest
-		rawRatings.sort().reverse();
-
-		// create actual ratings objects
-		for( var i = 0; i < rawRatings.length; i++ ) {
-
-			ratings.push( {id:rawRatings[i], label: rawRatings[i] + ' Stars (' + rawRatingCounts[rawRatings[i]] + ')' });
-		}
-
-		// add the default "show all" rating
-		ratings.unshift( DEFAULT_RATING_OPTION );
-
-		return ratings;
+		return movieList;
 	};
 
 	// gross string parsing to create a movie object
