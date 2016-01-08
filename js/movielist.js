@@ -4,7 +4,15 @@ function MovieList() {
 
 MovieList.prototype.addMovie = function(movie){
 	this.movies.push( movie );
-}
+};
+
+MovieList.prototype.clearMovies = function() {
+	this.movies = [];
+};
+
+MovieList.prototype.getDefaultRatingOption = function() {
+	return {id:'ANY', label:'Any Rating'};
+};
 
 MovieList.prototype.getRatingOptions = function(){
 	var rawRatings = [];
@@ -24,8 +32,8 @@ MovieList.prototype.getRatingOptions = function(){
 
 	// create the real ratings object
 	var finalRatings = [];
-	for( var i = 0; i < rawRatings.length; i++ ) {
-		var rating = {id:rawRatings[i], label: rawRatings[i] + ' Stars (' + rawRatingCounts[rawRatings[i]] + ')' };
+	for( var j = 0; j < rawRatings.length; j++ ) {
+		var rating = {id:rawRatings[j], label: rawRatings[j] + ' Stars (' + rawRatingCounts[rawRatings[j]] + ')' };
 		finalRatings.push( rating );
 	}
 
@@ -33,8 +41,4 @@ MovieList.prototype.getRatingOptions = function(){
 	finalRatings.unshift( this.getDefaultRatingOption() );
 
 	return finalRatings;
-}
-
-MovieList.prototype.getDefaultRatingOption = function() {
-	return {id:'ANY', label:'Any Rating'};
-}
+};
