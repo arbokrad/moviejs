@@ -1,16 +1,12 @@
-<div class="dropdown">
-	<button class="btn btn-xs btn-default dropdown-toggle" type="button" data-toggle="dropdown">Actions<span class="caret"></span></button>
-	<ul class="dropdown-menu">
-		<li>
-			<a ng-click="toggleFavorite(movie.id-1)">
-				<span ng-show="movie.favorite">Un-</span>Favorite
-			</a>
-		</li>
-		<li>
-			<a ng-click="searchIMDB(movie.name)">Search on IMDB</a>
-		</li>
-		<li>
-			<a ng-click="searchRT(movie.name)">Search on Rotten Tomatoes</a>
-		</li>
-	</ul>
+<div class="btn-group" uib-dropdown>
+	<button id="split-button" type="button" class="btn btn-xs btn-default" ng-click="toggleFavorite(movie.id-1)">
+		<span ng-show="movie.favorite">Un-</span>Favorite
+	</button>
+  <button type="button" class="btn btn-xs btn-default" uib-dropdown-toggle>
+    <span class="caret"></span>
+  </button>
+  <ul uib-dropdown-menu role="menu" aria-labelledby="split-button">
+    <li role="menuitem"><a ng-click="searchIMDB(movie.name)">Search on IMDB</a></li>
+    <li role="menuitem"><a ng-click="searchRT(movie.name)">Search on Rotten Tomatoes</a></li>
+  </ul>
 </div>

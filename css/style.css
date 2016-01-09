@@ -1,7 +1,7 @@
 #master-data th { cursor: pointer; text-align:center; }
 #master-data .even{ background-color: #fff }
 #master-data .odd{ background-color: #eee }
-#master-data #watch-date, #master-data #actions{ width: 8%; }
+#master-data #watch-date, #master-data #actions{ width: 10%; }
 
 #ratingPicker{ width: 140px; }
 

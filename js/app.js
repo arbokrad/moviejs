@@ -1,3 +1,3 @@
 (function() {
-	angular.module( 'movieApp', ['angular.filter'] );
+	angular.module( 'movieApp', ['ui.bootstrap'] );
 })();
