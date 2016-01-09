@@ -3,17 +3,17 @@
 	<div class="panel-body">
 		<div class="col-md-6">
 			<div class="col-md-2">
-				<button class="btn btn-default" type="button" ng-click="toggleDetails();this.blur();">
+				<button class="btn btn-primary" type="button" ng-click="toggleDetails();this.blur();">
 					<span ng-show="!showDetails">Show Details</span>
 					<span ng-show="showDetails">Hide Details</span>
 				</button>
 			</div>
 			<div class="col-md-3">
-				<button class="btn btn-default" type="button" ng-click="toggleShowFavoritesOnly()">
+				<button class="btn btn-primary" type="button" ng-click="toggleShowFavoritesOnly()">
 					<span ng-show="!showFavoritesOnly">Show Favorites</span>
 					<span ng-show="showFavoritesOnly">Show All</span>
 				</button>
-				
+
 			</div>
 			<div class="col-mid-4 form-group">
 				<select name="filterRating" id="ratingPicker" ng-model="filterRating" ng-options="opt.id as opt.label for opt in ratingOptions" class="form-control">
@@ -26,10 +26,10 @@
 				<input ng-model="searchQuery" class="form-control" placeholder="Search {{allMovies.length}} Movies..."></input>
 			</div>
 			<div class="col-md-1">
-				<button class="btn btn-default" type="button"  ng-show="searchQuery.length > 0" ng-click="clearQuery()">Clear</button>
+				<button class="btn btn-primary" type="button"  ng-show="searchQuery.length > 0" ng-click="clearQuery()">Clear</button>
 			</div>
 			<div class="col-md-1">
-				<button class="btn btn-default" type="button" ng-click="refresh()">Reload Data</button>
+				<button class="btn btn-primary" type="button" ng-click="refresh()">Reload Data</button>
 			</div>
 		</div>
 	</div>
