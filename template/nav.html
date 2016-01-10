@@ -27,15 +27,23 @@
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ratings Filter <span class="caret"></span></a>
 				<ul class="dropdown-menu">
-					<li ng-repeat="opt in ratingOptions">
+					<li ng-repeat="opt in movieList.ratingOptions">
 						<a ng-click="setFilterRating(opt.id)">{{opt.label}}</a>
+					</li>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genre Filter <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li ng-repeat="opt in movieList.genreOptions">
+						<a ng-click="setFilterGenre(opt.id)">{{opt.label}}</a>
 					</li>
 				</ul>
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 			<form class="navbar-form navbar-left" role="search">
-				<input ng-model="searchQuery" class="movie-search form-control" placeholder="Search {{allMovies.length}} Movies..."></input>
+				<input ng-model="searchQuery" class="movie-search form-control" placeholder="Search {{movieList.movies.length}} Movies..."></input>
 			</form>
 			<li>
 				<a href="#" ng-click="clearQuery()" onclick="this.blur()">Clear</a>

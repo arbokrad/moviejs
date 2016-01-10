@@ -5,22 +5,20 @@
 
 		var dataURL = 'https://spreadsheets.google.com/feeds/list/1WfPJ5pDCYsh8wq0f3so7kFtbW3UT4-OpSvI2t027zXk/o1a66w7/public/basic?alt=json';
 		var orderBy = $filter('orderBy');
+		var favCount = 0;
 
-		$scope.allMovies = [];
-		$scope.ratingOptions = [];
-		$scope.favCount = 0;
+		$scope.movieList = {};
 		$scope.showDetails = false;
 		$scope.showFavoritesOnly = false;
 		$scope.filterRating = 'ANY';
+		$scope.filterGenre = 'ALL';
 		$scope.searchQuery = '';
 
 		// load data from the provided URL
 		$scope.refresh = function() {
 			$http.get( dataURL )
 				.success( function(response) {
-					var movieList = movieUtil.parse(response);
-					$scope.allMovies = movieList.movies;
-					$scope.ratingOptions = movieList.getRatingOptions();
+					$scope.movieList = movieUtil.parse(response);
 
 					$scope.loaded = true;
 				});
@@ -29,7 +27,7 @@
 		$scope.search = function(movie) {
 			var q = $scope.searchQuery.toLowerCase();
 
-			if( movie.name.toLowerCase().indexOf(q) > -1 || movie.genre.toLowerCase().indexOf(q) > -1 ) {
+			if( movie.name.toLowerCase().indexOf(q) > -1 ) {
 				return true;
 			}
 
@@ -42,7 +40,7 @@
 			$scope.sortReverse = ($scope.sortColumn === column) ? !$scope.sortReverse : false;
 
 			// perform the sort
-			$scope.allMovies = orderBy(  $scope.allMovies, column, $scope.sortReverse );
+			$scope.movieList.movies = orderBy(  $scope.movieList.movies, column, $scope.sortReverse );
 
 			// persist the specified sort column
 			$scope.sortColumn = column;
@@ -60,6 +58,10 @@
 			$scope.filterRating = val;
 		};
 
+		$scope.setFilterGenre = function(val) {
+			$scope.filterGenre = val;
+		};
+
 		// set a movie as a favorite
 		$scope.toggleFavorite = function(movie) {
 
@@ -67,10 +69,10 @@
 			movie.toggleFavorite();
 
 			// keep track of the number of movies that have been favorited or un-favorited
-			$scope.favCount = movie.favorite === true ? $scope.favCount + 1 : $scope.favCount - 1;
+			favCount = movie.favorite === true ? favCount + 1 : favCount - 1;
 
 			// if there are no more favorites, and we are showing only favorites, show the full list instead
-			if( $scope.favCount <= 0 && $scope.showFavoritesOnly ) {
+			if( favCount <= 0 && $scope.showFavoritesOnly ) {
 				$scope.showFavoritesOnly = false;
 			}
 		};

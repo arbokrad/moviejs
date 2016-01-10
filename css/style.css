@@ -1,8 +1,8 @@
 #movie-list{ width: 90%; margin: 0 auto }
 #master-data th { cursor: pointer; text-align:center; }
-#master-data .even{ background-color: #fff }
-#master-data .odd{ background-color: #eee }
-#master-data #watch-date, #master-data #actions{ width: 10%; }
+#master-data #watch-date, #master-data #id{ width: 70px; }
+#master-data #actions{ width:10%; }
+#master-data #pag-controls .pagination{ margin-top: 4px; margin-bottom: 0px; }
 
 #ratingPicker{ width: 140px; }
 
@@ -12,11 +12,3 @@
 
 .linkify{ cursor:pointer; }
 .favorite{ font-weight: bold; }
-
-.st-sort-ascent:before{
-  content: '\25B2';
-}
-
-.st-sort-descent:before{
-  content: '\25BC';
-}

@@ -40,4 +40,23 @@
 		};
 	});
 
+	angular.module( 'movieApp' ).filter( 'genre' , function(){
+		return function(input, genre) {
+
+			if( genre == 'ALL' ) {
+				return input;
+			} else {
+				var results = [];
+
+				angular.forEach( input, function(movie) {
+					if( movie.genre == genre ) {
+						results.push( movie );
+					}
+				});
+
+				return results;
+			}
+		};
+	});
+
 })();

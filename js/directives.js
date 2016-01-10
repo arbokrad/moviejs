@@ -13,4 +13,11 @@
 		};
 	});
 
+	angular.module( 'movieApp' ).directive( 'pageHeader', function() {
+		return {
+			restrict: 'E',
+			templateUrl: 'template/header.html'
+		};
+	});
+
 })();

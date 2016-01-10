@@ -1,8 +1,10 @@
 function MovieList() {
 	this.movies = [];
+	this.ratingOptions = [];
+	this.genreOptions = [];
 }
 
-MovieList.prototype.addMovie = function(movie){
+MovieList.prototype.addMovie = function(movie) {
 	this.movies.push( movie );
 };
 
@@ -14,7 +16,9 @@ MovieList.prototype.getDefaultRatingOption = function() {
 	return {id:'ANY', label:'Any Rating'};
 };
 
-MovieList.prototype.getRatingOptions = function(){
+MovieList.prototype.loadRatingOptions = function() {
+	this.ratingOptions = [];
+
 	var rawRatings = [];
 	var rawRatingCounts = [];
 
@@ -24,21 +28,46 @@ MovieList.prototype.getRatingOptions = function(){
 			rawRatings.push( this.movies[i].rating );
 		}
 
-		rawRatingCounts[this.movies[i].rating] = rawRatingCounts[this.movies[i].rating] ? rawRatingCounts[this.movies[i].rating]+1 : 1;
+		rawRatingCounts[this.movies[i].rating] = rawRatingCounts[this.movies[i].rating] ? rawRatingCounts[this.movies[i].rating] + 1 : 1;
 	}
 
 	// put the ratings in order from best to worst
 	rawRatings.sort().reverse();
 
-	// create the real ratings object
-	var finalRatings = [];
+	// create the real ratings objects
 	for( var j = 0; j < rawRatings.length; j++ ) {
 		var rating = {id:rawRatings[j], label: rawRatings[j] + ' Stars (' + rawRatingCounts[rawRatings[j]] + ')' };
-		finalRatings.push( rating );
+		this.ratingOptions.push( rating );
 	}
 
 	// add the default "show all" option
-	finalRatings.unshift( this.getDefaultRatingOption() );
+	this.ratingOptions.unshift( this.getDefaultRatingOption() );
+};
 
-	return finalRatings;
+MovieList.prototype.getDefaultGenreOption = function() {
+	return {id:'ALL', label:'All'};
+};
+
+MovieList.prototype.loadGenreOptions = function() {
+	this.genreOptions = [];
+
+	var rawGenres = [];
+	var rawGenreCounts = [];
+
+	for( var i = 0; i < this.movies.length; i++ ) {
+		if( rawGenres.indexOf( this.movies[i].genre ) == -1 ) {
+			rawGenres.push( this.movies[i].genre );
+		}
+
+		rawGenreCounts[this.movies[i].genre] = rawGenreCounts[this.movies[i].genre] ? rawGenreCounts[this.movies[i].genre] + 1 : 1;
+	}
+
+	rawGenres.sort();
+
+	for( var j = 0; j < rawGenres.length; j++ ) {
+		var genre = {id:rawGenres[j], label: rawGenres[j] + ' (' + rawGenreCounts[rawGenres[j]] + ')' };
+		this.genreOptions.push( genre );
+	}
+
+	this.genreOptions.unshift( this.getDefaultGenreOption() );
 };

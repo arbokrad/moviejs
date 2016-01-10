@@ -1,13 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html ng-app="movieApp">
-	<head>
-		<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-		<meta content="utf-8" http-equiv="encoding">
-
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-		<link rel="stylesheet" href="css/style.css">
-	</head>
+	<page-header></page-header>
 	<body>
 		<div id="movie-list" ng-controller="movieCtrl" ng-cloak>
 			<div ng-show="!loaded">Loading Movies...</div>
@@ -32,7 +25,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr dir-paginate="movie in allMovies | filter:search | favorite:showFavoritesOnly | rating:filterRating | itemsPerPage:20 track by $index">
+						<tr dir-paginate="movie in movieList.movies | filter:search | favorite:showFavoritesOnly | rating:filterRating | genre:filterGenre | itemsPerPage:20 track by $index">
 							<td class="center">
 								<movie-actions></movie-actions>
 							</td>
@@ -49,10 +42,10 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<td colspan="10" align="center">
+							<td colspan="10" align="center" id="pag-controls">
 								<dir-pagination-controls
 			 							max-size="5"
-			 							direction-links="false"
+			 							direction-links="true"
 			 							boundary-links="true"
 										auto-hide="false" >
 	 							</dir-pagination-controls>

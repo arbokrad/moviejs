@@ -28,8 +28,11 @@ var movieUtil = function() {
 			movieList.addMovie( movie );
 		}
 
+		movieList.loadRatingOptions();
+		movieList.loadGenreOptions();
+
 		return movieList;
-	};
+	}
 
 	// gross string parsing to create a movie object
 	function parseMovieLine( movieLine ){
@@ -87,7 +90,7 @@ var movieUtil = function() {
 		}
 
 		return movie;
-	};
+	}
 
 	// expose the public functions and attributes
 	return {
