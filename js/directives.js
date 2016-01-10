@@ -1,8 +1,8 @@
 (function() {
-	angular.module( 'movieApp' ).directive( 'controlPanel', function() {
+	angular.module( 'movieApp' ).directive( 'movieNav', function() {
 		return {
 			restrict: 'E',
-			templateUrl: 'template/control-panel.html'
+			templateUrl: 'template/nav.html'
 		};
 	});
 

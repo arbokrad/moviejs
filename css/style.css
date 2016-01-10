@@ -1,3 +1,4 @@
+#movie-list{ width: 90%; margin: 0 auto }
 #master-data th { cursor: pointer; text-align:center; }
 #master-data .even{ background-color: #fff }
 #master-data .odd{ background-color: #eee }

@@ -1,0 +1,43 @@
+<nav class="navbar navbar-inverse">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="https://github.com/arbokrad/movielistjs">MovieListJS</a>
+	</div>
+	<div class="navbar-collapse collapse">
+		<ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li>
+						<a ng-click="toggleDetails()" onclick="this.blur()">
+							<span ng-show="!showDetails">Show Details</span>
+							<span ng-show="showDetails">Hide Details</span>
+						</a>
+					</li>
+					<li>
+						<a ng-click="toggleShowFavoritesOnly()" onclick="this.blur()">
+							<span ng-show="!showFavoritesOnly">Show Favorites</span>
+							<span ng-show="showFavoritesOnly">Show All</span>
+						</a>
+					</li>
+					<li>
+						<a ng-click="refresh()" onclick="this.blur()">Reload</a>
+					</li>
+        </ul>
+      </li>
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ratings <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li ng-repeat="opt in ratingOptions">
+						<a ng-click="setFilterRating(opt.id)">{{opt.label}}</a>
+					</li>
+				</ul>
+			</li>
+			<form class="navbar-form navbar-left" role="search">
+				<input ng-model="searchQuery" class="form-control" placeholder="Search {{allMovies.length}} Movies..."></input>
+			</form>
+			<li>
+				<a href="#" ng-click="clearQuery()" onclick="this.blur()">Clear</a>
+			</li>
+    </ul>
+	</div>
+</nav>

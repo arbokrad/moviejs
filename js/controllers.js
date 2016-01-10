@@ -26,10 +26,6 @@
 				});
 		};
 
-		$scope.getMovie = function(id) {
-			return $scope.allMovies[id];
-		};
-
 		$scope.search = function(movie) {
 			var q = $scope.searchQuery.toLowerCase();
 
@@ -60,15 +56,18 @@
 			$scope.searchQuery = '';
 		};
 
-		// set a movie as a favorite
-		$scope.toggleFavorite = function(id) {
-			var movie = $scope.getMovie(id);
+		$scope.setFilterRating = function(val) {
+			$scope.filterRating = val;
+		};
 
-			// toggle the actual movie
+		// set a movie as a favorite
+		$scope.toggleFavorite = function(movie) {
+
+			// toggle the value
 			movie.toggleFavorite();
 
 			// keep track of the number of movies that have been favorited or un-favorited
-			$scope.favCount = movie.favorite ? $scope.favCount++ : $scope.favCount--;
+			$scope.favCount = movie.favorite === true ? $scope.favCount + 1 : $scope.favCount - 1;
 
 			// if there are no more favorites, and we are showing only favorites, show the full list instead
 			if( $scope.favCount <= 0 && $scope.showFavoritesOnly ) {
@@ -102,5 +101,5 @@
 			$scope.order( 'date', false );
 		};
 		$scope.init();
-	};
+	}
 })();

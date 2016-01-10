@@ -9,15 +9,15 @@
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-		<div ng-controller="movieCtrl" ng-cloak>
+		<div id="movie-list" ng-controller="movieCtrl" ng-cloak>
 			<div ng-show="!loaded">Loading Movies...</div>
 			<div ng-show="loaded">
 
-				<!-- custom directive to render the control panel -->
-				<control-panel></control-panel>
+				<!-- custom directive to render the nav -->
+				<movie-nav></movie-nav>
 
 				<!-- master data table -->
-				<table id="master-data" class="table">
+				<table id="master-data" class="table table-bordered">
 					<thead>
 						<tr>
 							<th id="actions">Actions</th>
@@ -35,8 +35,7 @@
 					<tbody>
 						<tr ng-repeat="movie in allMovies | filter:search | favorite:showFavoritesOnly | rating:filterRating track by $index"
 								ng-class-even="'even'"
-								ng-class-odd="'odd'"
-								ng-hide="allMovies | isEmpty">
+								ng-class-odd="'odd'">
 							<td class="center">
 								<movie-actions></movie-actions>
 							</td>
@@ -49,9 +48,6 @@
 							<td ng-show="showDetails" class="center">{{movie.year}}</td>
 							<td ng-show="showDetails" class="left">{{movie.genre}}</td>
 							<td ng-show="showDetails" class="left">{{movie.medium}}</td>
-						</tr>
-						<tr>
-							<td colspan="10" ng-show="allMovies | isEmpty">No Results</td>
 						</tr>
 					</tbody>
 				</table>
