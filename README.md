@@ -4,3 +4,5 @@ MovieListJS is a playground project to wrap and display movie data in a clean, p
 * Load and parse movie data from a google sheet
 * Display resulting movie data
 * Allow favorites, sorting, filtering, and searching on popular movie sites (IMDB, RT)
+
+Uses dirPaginate (angular-utils-pagination), and AngularUI bootstrap (ui-bootstrap)
