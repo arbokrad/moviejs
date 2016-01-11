@@ -8,7 +8,7 @@ MovieList.prototype.addMovie = function(movie) {
 	this.movies.push( movie );
 };
 
-MovieList.prototype.clearMovies = function() {
+MovieList.prototype.clear = function() {
 	this.movies = [];
 };
 
@@ -71,3 +71,5 @@ MovieList.prototype.loadGenreOptions = function() {
 
 	this.genreOptions.unshift( this.getDefaultGenreOption() );
 };
+
+module.exports = MovieList;
