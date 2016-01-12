@@ -9,6 +9,12 @@ MovieList.prototype.addMovie = function(movie) {
 };
 
 MovieList.prototype.clear = function() {
+	this.clearMovies();
+	this.clearRatings();
+	this.clearGenres();
+};
+
+MovieList.prototype.clearMovies = function() {
 	this.movies = [];
 };
 

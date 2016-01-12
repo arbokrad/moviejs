@@ -21,12 +21,27 @@ describe( "MovieList", function(){
       expect( movieList.movies.length ).toEqual( 3 );
     });
 
-    it( "should be able have its list of movies cleared", function(){
-      movieList.clear();
-
+    it( "should be able have its movie list cleared", function(){
+      movieList.clearMovies();
       expect( movieList.movies.length ).toEqual( 0 );
     });
 
+    it("should be able to have its genre options cleared", function(){
+      movieList.clearGenres();
+      expect( movieList.genreOptions.length ).toEqual( 0 );
+    });
+
+    it("should be able to have its rating options cleared", function(){
+      movieList.clearRatings();
+      expect( movieList.ratingOptions.length ).toEqual( 0 );
+    });
+
+    it("should be able to have all its data cleared", function(){
+      movieList.clear();
+      expect( movieList.movies.length ).toEqual( 0 );
+      expect( movieList.genreOptions.length ).toEqual( 0 );
+      expect( movieList.ratingOptions.length ).toEqual( 0 );
+    });
   });
 
   describe( "metadata", function(){
