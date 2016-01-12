@@ -82,16 +82,6 @@
 			$scope.showFavoritesOnly = !$scope.showFavoritesOnly;
 		};
 
-		$scope.menuClass = function( type, opt ) {
-			if( type === 'genre' ) {
-				return (opt.id == $scope.filterGenre ? 'navopt-selected' : 'none' );
-			} else if( type === 'rating' ) {
-				return (opt.id == $scope.filterRating ? 'navopt-selected' : 'none' );
-			} else {
-				return '';
-			}
-		};
-
 		$scope.searchRT = function(term) {
 			var baseURL = 'http://www.rottentomatoes.com/search/?search=%SEARCH_TERM%';
 
@@ -99,6 +89,7 @@
 			win.focus();
 		};
 
+		// searches IMDB with the provided movie title
 		$scope.searchIMDB = function(term) {
 			var baseURL = 'http://www.imdb.com/find?ref_=nv_sr_fn&q=%SEARCH_TERM%&s=all';
 
@@ -110,6 +101,8 @@
 		$scope.init = function() {
 			// populate data
 			$scope.refresh();
+
+			// set the proper ordering
 			$scope.order( 'date', false );
 		};
 		$scope.init();

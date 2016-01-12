@@ -17,5 +17,4 @@ describe( "Movie", function(){
     movie.toggleFavorite();
     expect( movie.favorite ).toEqual( true );
   });
-
 });
