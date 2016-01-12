@@ -4,7 +4,7 @@
 	<body>
 		<div id="movie-list" ng-controller="movieCtrl" ng-cloak>
 			<div ng-show="!loaded">Loading Movies...</div>
-			<div ng-show="loaded">
+			<div ng-show="loaded" ng-cloak>
 
 				<!-- custom directive to render the nav -->
 				<movie-nav></movie-nav>
@@ -54,11 +54,13 @@
 					</tfoot>
 				</table>
 			</div>
+			<page-footer></page-footer>
 		</div>
 
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-mocks.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 		<script src="js/movie.js" type="text/javascript"></script>
 		<script src="js/movielist.js" type="text/javascript"></script>
 		<script src="js/movie-util.js" type="text/javascript"></script>
@@ -68,6 +70,5 @@
 		<script src="js/filters.js" type="text/javascript"></script>
 		<script src="js/ui-bootstrap/ui-bootstrap-0.14.3.js" type="text/javascript"></script>
 		<script src="js/node_modules/angular-utils-pagination/dirPagination.js" type="text/javascript"></script>
-
 	</body>
 </html>

@@ -15,4 +15,8 @@ Movie.prototype.toggleFavorite = function() {
 	this.favorite = !this.favorite;
 };
 
-module.exports = Movie;
+try{
+	module.exports = Movie;
+} catch( e ){
+	// do nothing
+}

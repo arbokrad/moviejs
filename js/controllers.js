@@ -82,6 +82,16 @@
 			$scope.showFavoritesOnly = !$scope.showFavoritesOnly;
 		};
 
+		$scope.menuClass = function( type, opt ) {
+			if( type === 'genre' ) {
+				return (opt.id == $scope.filterGenre ? 'navopt-selected' : 'none' );
+			} else if( type === 'rating' ) {
+				return (opt.id == $scope.filterRating ? 'navopt-selected' : 'none' );
+			} else {
+				return '';
+			}
+		};
+
 		$scope.searchRT = function(term) {
 			var baseURL = 'http://www.rottentomatoes.com/search/?search=%SEARCH_TERM%';
 

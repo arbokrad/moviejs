@@ -3,84 +3,99 @@ describe( "MovieList", function(){
   var MovieList = require("../js/movielist.js");
   var movieList;
 
-  beforeEach( function(){
-    movieList = new MovieList();
+  describe( "mutators", function(){
 
-    var movie1 = new Movie();
-    movie1.rating = '4.5';
-    movie1.genre = 'Action';
-    movieList.addMovie( movie1 );
+    beforeEach( function(){
+      movieList = new MovieList();
 
-    var movie2 = new Movie();
-    movie2.rating = '3.0';
-    movie2.genre = 'Adventure';
-    movieList.addMovie( movie2 );
+      var movie = new Movie();
+      movieList.addMovie( movie );
+    });
 
-    var movie3 = new Movie();
-    movie3.rating = '3.0';
-    movie3.genre = 'Comedy';
-    movieList.addMovie( movie3 );
+    it( "should be able to have one or more movies added to it", function(){
+      var movie = new Movie();
+      movieList.addMovie( movie );
+      expect( movieList.movies.length ).toEqual( 2 );
 
-    var movie4 = new Movie();
-    movie4.rating = '1.0';
-    movie4.genre = 'Comedy';
-    movieList.addMovie( movie4 );
+      movieList.addMovie( movie );
+      expect( movieList.movies.length ).toEqual( 3 );
+    });
 
-    movieList.loadRatingOptions();
-    movieList.loadGenreOptions();
+    it( "should be able have its list of movies cleared", function(){
+      movieList.clear();
+
+      expect( movieList.movies.length ).toEqual( 0 );
+    });
+
   });
 
-  it( "should be able to have one or more movies added to it", function(){
-    var movie = new Movie();
-    movieList.addMovie( movie );
-    expect( movieList.movies.length ).toEqual( 5 );
+  describe( "metadata", function(){
+    beforeEach( function(){
+      movieList = new MovieList();
 
-    movieList.addMovie( movie );
-    expect( movieList.movies.length ).toEqual( 6 );
-  });
+      var movie1 = new Movie();
+      movie1.rating = '4.5';
+      movie1.genre = 'Action';
+      movieList.addMovie( movie1 );
 
-  it( "should be able have its list of movies cleared", function(){
-    movieList.clear();
+      var movie2 = new Movie();
+      movie2.rating = '3.0';
+      movie2.genre = 'Adventure';
+      movieList.addMovie( movie2 );
 
-    expect( movieList.movies.length ).toEqual( 0 );
-  });
+      var movie3 = new Movie();
+      movie3.rating = '3.0';
+      movie3.genre = 'Comedy';
+      movieList.addMovie( movie3 );
 
-  it("should generate a distinct list of ratings from its current list of movies and a 'show all' option", function(){
+      var movie4 = new Movie();
+      movie4.rating = '1.0';
+      movie4.genre = 'Comedy';
+      movieList.addMovie( movie4 );
 
-    // account for the 'show all' option
-    expect( movieList.ratingOptions.length ).toEqual( 4 );
-  });
+      movieList.loadRatingOptions();
+      movieList.loadGenreOptions();
+    });
 
-  if( "should generate a correct list of ratings", function(){
-    var ratings = [];
-    for( var i = 0; i < movieList.ratingOptions.length; i++ ) {
-      if( ratings.indexOf( movieList.ratingOptions[i].id) == -1 ) {
-        ratings.push( movieList.ratingOptions[i].id );
+    it("should generate a distinct list of ratings from its current list of movies and a 'show all' option", function(){
+
+      // account for the 'show all' option
+      expect( movieList.ratingOptions.length ).toEqual( 4 );
+    });
+
+    it( "should generate a correct list of ratings", function(){
+      var ratings = [];
+      for( var i = 0; i < movieList.ratingOptions.length; i++ ) {
+        if( ratings.indexOf( movieList.ratingOptions[i].id) == -1 ) {
+          ratings.push( movieList.ratingOptions[i].id );
+        }
       }
-    }
 
-    expect( ratings ).toContain( '3.0' );
-    expect( ratings ).toContain( '4.5' );
-    expect( ratings ).toContain( '1.0' );
-    expect( ratings ).not.toContain( '-1.0' );
-  });
+      expect( ratings ).toContain( '3.0' );
+      expect( ratings ).toContain( '4.5' );
+      expect( ratings ).toContain( '1.0' );
+      expect( ratings ).toContain( 'ANY' );
+      expect( ratings ).not.toContain( '-1.0' );
+    });
 
-  it("should generate a distinct list of genres from its current list of movies and a 'show all' option", function(){
-    // account for the 'show all' option
-    expect( movieList.genreOptions.length ).toEqual( 4 );
-  });
+    it("should generate a distinct list of genres from its current list of movies and a 'show all' option", function(){
+      // account for the 'show all' option
+      expect( movieList.genreOptions.length ).toEqual( 4 );
+    });
 
-  it("should generate a correct list of genres", function(){
-    var genres = [];
-    for( var i = 0; i < movieList.genreOptions.length; i++ ) {
-      if( genres.indexOf( movieList.genreOptions[i].id) == -1 ) {
-        genres.push( movieList.genreOptions[i].id );
+    it("should generate a correct list of genres", function(){
+      var genres = [];
+      for( var i = 0; i < movieList.genreOptions.length; i++ ) {
+        if( genres.indexOf( movieList.genreOptions[i].id) == -1 ) {
+          genres.push( movieList.genreOptions[i].id );
+        }
       }
-    }
 
-    expect( genres ).toContain( 'Action' );
-    expect( genres ).toContain( 'Comedy' );
-    expect( genres ).toContain( 'Adventure' );
-    expect( genres ).not.toContain( 'Samoflange' );
+      expect( genres ).toContain( 'Action' );
+      expect( genres ).toContain( 'Comedy' );
+      expect( genres ).toContain( 'Adventure' );
+      expect( genres ).toContain( 'ALL' );
+      expect( genres ).not.toContain( 'Samoflange' );
+    });
   });
 });

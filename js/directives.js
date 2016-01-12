@@ -20,4 +20,11 @@
 		};
 	});
 
+	angular.module( 'movieApp' ).directive( 'pageFooter', function(){
+		return {
+			restrict: 'E',
+			templateUrl: 'template/footer.html'
+		};
+	});
+
 })();

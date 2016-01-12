@@ -12,12 +12,21 @@ MovieList.prototype.clear = function() {
 	this.movies = [];
 };
 
+MovieList.prototype.clearRatings = function() {
+	this.ratingOptions = [];
+};
+
+MovieList.prototype.clearGenres = function() {
+	this.genreOptions = [];
+};
+
+
 MovieList.prototype.getDefaultRatingOption = function() {
 	return {id:'ANY', label:'Any Rating'};
 };
 
 MovieList.prototype.loadRatingOptions = function() {
-	this.ratingOptions = [];
+	this.clearRatings();
 
 	var rawRatings = [];
 	var rawRatingCounts = [];
@@ -49,7 +58,7 @@ MovieList.prototype.getDefaultGenreOption = function() {
 };
 
 MovieList.prototype.loadGenreOptions = function() {
-	this.genreOptions = [];
+	this.clearGenres();
 
 	var rawGenres = [];
 	var rawGenreCounts = [];
@@ -72,4 +81,8 @@ MovieList.prototype.loadGenreOptions = function() {
 	this.genreOptions.unshift( this.getDefaultGenreOption() );
 };
 
-module.exports = MovieList;
+try{
+	module.exports = MovieList;
+} catch( e ){
+	// do nothing
+}

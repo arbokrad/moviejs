@@ -9,14 +9,14 @@
         <ul class="dropdown-menu">
           <li>
 						<a ng-click="toggleDetails()" onclick="this.blur()">
-							<span ng-show="!showDetails">Show Details</span>
-							<span ng-show="showDetails">Hide Details</span>
+							<span ng-show="showDetails">&check;</span>
+							Show Details
 						</a>
 					</li>
 					<li>
 						<a ng-click="toggleShowFavoritesOnly()" onclick="this.blur()">
-							<span ng-show="!showFavoritesOnly">Show Favorites</span>
-							<span ng-show="showFavoritesOnly">Show All</span>
+							<span ng-show="showFavoritesOnly">&check;</span>
+							Show Favorites
 						</a>
 					</li>
 					<li>
@@ -28,7 +28,10 @@
 				<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ratings Filter <span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li ng-repeat="opt in movieList.ratingOptions">
-						<a ng-click="setFilterRating(opt.id)">{{opt.label}}</a>
+						<a ng-click="setFilterRating(opt.id)">
+							<span ng-show="opt.id == filterRating">&check;</span>
+							{{opt.label}}
+						</a>
 					</li>
 				</ul>
 			</li>
@@ -36,7 +39,10 @@
 				<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Genre Filter <span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li ng-repeat="opt in movieList.genreOptions">
-						<a ng-click="setFilterGenre(opt.id)">{{opt.label}}</a>
+						<a ng-click="setFilterGenre(opt.id)">
+							<span ng-show="opt.id == filterGenre">&check;</span>
+							{{opt.label}}
+						</a>
 					</li>
 				</ul>
 			</li>
