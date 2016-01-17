@@ -1,0 +1,32 @@
+{
+  "name": "movielistjs",
+  "version": "1.0.0",
+  "description": "Sample angular app to catalog and sort movies",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.1",
+    "gulp-jasmine": "^2.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arbokrad/movielistjs.git"
+  },
+  "keywords": [
+    "movie",
+    "angular",
+    "movielist"
+  ],
+  "author": "arbokrad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arbokrad/movielistjs/issues"
+  },
+  "homepage": "https://github.com/arbokrad/movielistjs#readme"
+}
