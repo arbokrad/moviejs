@@ -1,9 +1,9 @@
 (function() {
-	angular.module( 'movieApp' ).controller('movieCtrl', ['$scope', '$filter', '$http', MovieController]);
 
-	function MovieController( $scope, $filter, $http ) {
+	angular.module( 'movieApp' ).controller('movieCtrl', ['$scope', '$filter', '$http', 'dataService', MovieController]);
 
-		var dataURL = 'https://spreadsheets.google.com/feeds/list/1WfPJ5pDCYsh8wq0f3so7kFtbW3UT4-OpSvI2t027zXk/o1a66w7/public/basic?alt=json';
+	function MovieController( $scope, $filter, $http, dataService ) {
+
 		var orderBy = $filter('orderBy');
 		var favCount = 0;
 
@@ -16,12 +16,10 @@
 
 		// load data from the provided URL
 		$scope.refresh = function() {
-			$http.get( dataURL )
-				.success( function(response) {
-					$scope.movieList = movieUtil.parse(response);
-
-					$scope.loaded = true;
-				});
+			dataService.getData().then( function(data){
+				$scope.movieList = movieUtil.parse( data );
+				$scope.loaded = true;
+			});
 		};
 
 		$scope.search = function(movie) {
